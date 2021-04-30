@@ -1,12 +1,12 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
+import { Container } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Memocho</h1>
-      </header>
-    </div>
+    <RecoilRoot>
+      <Container />
+    </RecoilRoot>
   );
 }
 
