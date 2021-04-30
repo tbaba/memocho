@@ -5,6 +5,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { newMemoFormIsOpened } from '../modules/memos';
 import { useSetRecoilState } from 'recoil';
 import { FormContainer } from './AddMemo/Form';
+import { AppendButtonContainer } from './AppendButton';
 
 function useContainer() {
   const setIsModalOpened = useSetRecoilState(newMemoFormIsOpened);
@@ -29,9 +30,7 @@ export function Container() {
         </div>
       </AppBar>
       <ListContainer />
-      <Fab color="primary" aria-label="add" style={{ position: 'absolute', bottom: '10px', right: '10px' } as const}>
-        <AddIcon onClick={openModal} />
-      </Fab>
+      <AppendButtonContainer />
       <FormContainer />
     </div>
   );
