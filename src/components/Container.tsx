@@ -1,27 +1,10 @@
 import React from 'react';
-import { AppBar, Fab } from '@material-ui/core';
+import { AppBar } from '@material-ui/core';
 import { ListContainer } from './MemoList';
-import AddIcon from '@material-ui/icons/Add';
-import { newMemoFormIsOpened } from '../modules/memos';
-import { useSetRecoilState } from 'recoil';
 import { FormContainer } from './AddMemo/Form';
 import { AppendButtonContainer } from './AppendButton';
 
-function useContainer() {
-  const setIsModalOpened = useSetRecoilState(newMemoFormIsOpened);
-
-  const openModal = () => {
-    setIsModalOpened(true);
-  }
-
-  return {
-    openModal,
-  }
-}
-
 export function Container() {
-  const { openModal } = useContainer();
-
   return (
     <div className="App">
       <AppBar>
