@@ -11,6 +11,7 @@ import AddIcon from "@material-ui/icons/Add";
 import React from "react";
 import { useRecoilState } from "recoil";
 import {
+  getNewId,
   memosState,
   newMemoFormIsOpened,
   newMemoState,
@@ -66,10 +67,9 @@ function useAddMemoForm(): FormProps {
   const [memos, setMemos] = useRecoilState(memosState);
 
   const onSubmit = () => {
-    const newMemos = [...memos, newMemo];
+    const newMemos = [...memos, { ...newMemo, id: getNewId() }];
 
     setMemos(newMemos);
-    setNewMemo({ title: "", body: "" });
     setIsModalOpened(false);
   };
 

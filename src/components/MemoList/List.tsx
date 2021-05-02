@@ -1,14 +1,17 @@
-import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { Memo as MemoProps } from '../../models';
-import { memosState } from '../../modules/memos';
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { PersistedRow } from "../../models";
+import { memosState } from "../../modules/memos";
+import { MemoContainer } from './Memo';
 
 type ListProps = {
-  memos: MemoProps[];
-}
+  memos: PersistedRow[];
+};
 
 function List({ memos }: ListProps) {
-  const items = memos.map((item) => <Memo {...item} />)
+  const items = memos.map((memo) => (
+    <MemoContainer key={memo.id} memo={memo} />
+  ));
 
   return <div>{items}</div>;
 }
@@ -18,22 +21,9 @@ function useList() {
 
   return {
     memos,
-  }
+  };
 }
 
 export function ListContainer() {
-  return <List {...useList()} />
-}
-
-function Memo({ title, body }: MemoProps) {
-  return (
-    <div>
-      <header>
-        <h2 style={{ fontSize: '1em' } as const}>{title}</h2>
-      </header>
-      <section>
-        {body.substr(0, 30)}
-      </section>
-    </div>
-  )
+  return <List {...useList()} />;
 }
