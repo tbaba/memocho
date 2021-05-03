@@ -1,7 +1,7 @@
 import { Input } from "@material-ui/core";
 import React from "react";
 import { useRecoilState, useRecoilValue, useRecoilCallback } from "recoil";
-import { memosState, editMemoState } from "../../modules/memos";
+import { memosState, editMemoState, putMemo } from "../../modules/memos";
 
 type TitleInputProps = {
   id: string;
@@ -29,12 +29,13 @@ function useTitleInput(): TitleInputProps {
   const memos = useRecoilValue(memosState);
   const editedMemo = useRecoilValue(editMemoState);
   const saveMemos = useRecoilCallback(
-    ({ set }) => (id: string) => {
+    ({ set }) => async (id: string) => {
       const idx = memos.findIndex((item) => item.id === id);
 
+      const updatedMemo = await putMemo(editedMemo);
       set(memosState, [
         ...memos.slice(0, idx),
-        editedMemo,
+        updatedMemo,
         ...memos.slice(idx + 1),
       ]);
     },

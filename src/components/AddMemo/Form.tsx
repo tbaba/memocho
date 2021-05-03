@@ -15,6 +15,7 @@ import {
   memosState,
   newMemoFormIsOpened,
   newMemoState,
+  postMemo,
 } from "../../modules/memos";
 
 type FormProps = {
@@ -66,10 +67,14 @@ function useAddMemoForm(): FormProps {
   const [newMemo, setNewMemo] = useRecoilState(newMemoState);
   const [memos, setMemos] = useRecoilState(memosState);
 
-  const onSubmit = () => {
-    const newMemos = [...memos, { ...newMemo, id: getNewId() }];
+  const onSubmit = async () => {
+    const memo = { ...newMemo, id: getNewId() };
 
-    setMemos(newMemos);
+    setNewMemo(memo);
+    const memoData = await postMemo(memo);
+
+    setMemos([...memos, memoData]);
+
     setIsModalOpened(false);
   };
 
