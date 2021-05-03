@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-memocho-dev-154116-authRole",
+      "UnauthRoleArn": "arn:aws:iam::454033762909:role/amplify-memocho-dev-154116-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::454033762909:role/amplify-memocho-dev-154116-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-memocho-dev-154116-deployment",
+      "UnauthRoleName": "amplify-memocho-dev-154116-unauthRole",
+      "StackName": "amplify-memocho-dev-154116",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:454033762909:stack/amplify-memocho-dev-154116/91697580-abda-11eb-a3c6-06e11c681d89",
+      "AmplifyAppId": "d2r8en94ta184b"
+    },
+    "categories": {
+      "auth": {
+        "memocho4c73ec62": {}
+      }
+    }
+  }
+}
