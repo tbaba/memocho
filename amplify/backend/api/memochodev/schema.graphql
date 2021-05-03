@@ -1,0 +1,5 @@
+type Memo @model {
+  id: ID!
+  title: String!
+  body: String
+}
