@@ -1,5 +1,13 @@
-type Memo @model {
+type Memo
+  @model
+  @key(
+    name: "SortByCreatedAt"
+    fields: ["owner", "createdAt"]
+    queryField: "listMemosSortedbyCreatedAt"
+  ) {
   id: ID!
   title: String!
   body: String
+  owner: String
+  createdAt: AWSDateTime
 }
